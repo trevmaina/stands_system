@@ -14,7 +14,272 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      content: {
+        Row: {
+          author_id: string
+          category_id: string | null
+          congregation: string | null
+          content: string | null
+          created_at: string
+          excerpt: string | null
+          featured_image: string | null
+          id: string
+          published_at: string | null
+          slug: string
+          status: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id: string
+          category_id?: string | null
+          congregation?: string | null
+          content?: string | null
+          created_at?: string
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          published_at?: string | null
+          slug: string
+          status?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string
+          category_id?: string | null
+          congregation?: string | null
+          content?: string | null
+          created_at?: string
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          published_at?: string | null
+          slug?: string
+          status?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "content_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "content_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content_categories: {
+        Row: {
+          congregation: string | null
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          congregation?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          slug: string
+        }
+        Update: {
+          congregation?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          congregation: string | null
+          created_at: string
+          created_by: string
+          description: string | null
+          end_date: string | null
+          featured_image: string | null
+          id: string
+          location: string | null
+          max_attendees: number | null
+          registration_required: boolean | null
+          start_date: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          congregation?: string | null
+          created_at?: string
+          created_by: string
+          description?: string | null
+          end_date?: string | null
+          featured_image?: string | null
+          id?: string
+          location?: string | null
+          max_attendees?: number | null
+          registration_required?: boolean | null
+          start_date: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          congregation?: string | null
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          end_date?: string | null
+          featured_image?: string | null
+          id?: string
+          location?: string | null
+          max_attendees?: number | null
+          registration_required?: boolean | null
+          start_date?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          congregation: string | null
+          created_at: string
+          email: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+          phone: string | null
+          role: Database["public"]["Enums"]["user_role"] | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          congregation?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          role?: Database["public"]["Enums"]["user_role"] | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          congregation?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          role?: Database["public"]["Enums"]["user_role"] | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sermons: {
+        Row: {
+          audio_url: string | null
+          congregation: string | null
+          created_at: string
+          description: string | null
+          id: string
+          scripture_reference: string | null
+          sermon_date: string
+          speaker: string
+          title: string
+          updated_at: string
+          video_url: string | null
+          youtube_url: string | null
+        }
+        Insert: {
+          audio_url?: string | null
+          congregation?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          scripture_reference?: string | null
+          sermon_date: string
+          speaker: string
+          title: string
+          updated_at?: string
+          video_url?: string | null
+          youtube_url?: string | null
+        }
+        Update: {
+          audio_url?: string | null
+          congregation?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          scripture_reference?: string | null
+          sermon_date?: string
+          speaker?: string
+          title?: string
+          updated_at?: string
+          video_url?: string | null
+          youtube_url?: string | null
+        }
+        Relationships: []
+      }
+      testimonies: {
+        Row: {
+          approved: boolean | null
+          congregation: string | null
+          content: string
+          created_at: string
+          id: string
+          image_url: string | null
+          name: string
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          approved?: boolean | null
+          congregation?: string | null
+          content: string
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          name: string
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          approved?: boolean | null
+          congregation?: string | null
+          content?: string
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          name?: string
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +288,17 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      user_role:
+        | "super_admin"
+        | "lead_pastor"
+        | "church_admin"
+        | "ministry_head"
+        | "media_team"
+        | "finance_officer"
+        | "events_coordinator"
+        | "content_contributor"
+        | "volunteer_coordinator"
+        | "member"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +425,19 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      user_role: [
+        "super_admin",
+        "lead_pastor",
+        "church_admin",
+        "ministry_head",
+        "media_team",
+        "finance_officer",
+        "events_coordinator",
+        "content_contributor",
+        "volunteer_coordinator",
+        "member",
+      ],
+    },
   },
 } as const
