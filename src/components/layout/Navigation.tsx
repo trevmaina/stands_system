@@ -73,7 +73,7 @@ export const Navigation = () => {
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">C</span>
               </div>
-              <span className="font-bold text-xl text-foreground">Church</span>
+              <span className="font-bold text-xl text-foreground">PCEA St Andrew's</span>
             </Link>
           </div>
 

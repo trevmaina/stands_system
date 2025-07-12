@@ -11,6 +11,8 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Events from "./pages/Events";
 import Sermons from "./pages/Sermons";
+import Testimonies from "./pages/Testimonies";
+import Give from "./pages/Give";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -37,6 +39,8 @@ const App = () => (
                 <Route path="/services" element={<Services />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="/sermons" element={<Sermons />} />
+                <Route path="/testimonies" element={<Testimonies />} />
+                <Route path="/give" element={<Give />} />
                 <Route path="/contact" element={<Contact />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />

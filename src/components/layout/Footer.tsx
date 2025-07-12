@@ -12,7 +12,7 @@ export const Footer = () => {
               <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                 <span className="text-accent-foreground font-bold text-sm">C</span>
               </div>
-              <span className="font-bold text-xl">Church</span>
+              <span className="font-bold text-xl">PCEA St Andrew's</span>
             </div>
             <p className="text-primary-foreground/80 mb-4">
               Building bridges of faith, hope, and love in our community.
@@ -47,6 +47,11 @@ export const Footer = () => {
               <li>
                 <Link to="/events" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   Events
+                </Link>
+              </li>
+              <li>
+                <Link to="/testimonies" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                  Testimonies
                 </Link>
               </li>
               <li>
@@ -86,19 +91,19 @@ export const Footer = () => {
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" />
                 <span className="text-primary-foreground/80 text-sm">
-                  123 Church Street, New York, NY 10001
+                  State House Rd/Nyerere Rd Junction, Nairobi
                 </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
                 <span className="text-primary-foreground/80 text-sm">
-                  (555) 123-4567
+                  +254(0) 707 257 000
                 </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
                 <span className="text-primary-foreground/80 text-sm">
-                  info@church.com
+                  info@pceastandrews.org
                 </span>
               </div>
             </div>
@@ -107,7 +112,7 @@ export const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Church. All rights reserved.
+            © {new Date().getFullYear()} PCEA St Andrew's Church. All rights reserved.
           </p>
         </div>
       </div>
