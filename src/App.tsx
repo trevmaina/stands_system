@@ -18,6 +18,13 @@ import NotFound from "./pages/NotFound";
 import MainCongregation from "./pages/congregations/Main";
 import YouthCongregation from "./pages/congregations/Youth";
 import FrenchCongregation from "./pages/congregations/French";
+import YouthIndex from "./pages/congregations/youth/Index";
+import YouthSermons from "./pages/congregations/youth/Sermons";
+import YouthMinistries from "./pages/congregations/youth/Ministries";
+import YouthEvents from "./pages/congregations/youth/Events";
+import YouthNewsletter from "./pages/congregations/youth/Newsletter";
+import YouthContact from "./pages/congregations/youth/Contact";
+import YouthNavigation from "./components/layout/YouthNavigation";
 
 const queryClient = new QueryClient();
 
@@ -33,27 +40,49 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen flex flex-col">
-            <Navigation />
-            <main className="flex-1">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/events" element={<Events />} />
-                <Route path="/sermons" element={<Sermons />} />
-                <Route path="/testimonies" element={<Testimonies />} />
-                <Route path="/give" element={<Give />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/congregations/main" element={<MainCongregation />} />
-                <Route path="/congregations/youth" element={<YouthCongregation />} />
-                <Route path="/congregations/french" element={<FrenchCongregation />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+          <Routes>
+            {/* Youth Congregation Routes - with dedicated navigation */}
+            <Route path="/congregations/youth/*" element={
+              <div className="min-h-screen flex flex-col">
+                <YouthNavigation />
+                <main className="flex-1">
+                  <Routes>
+                    <Route index element={<YouthIndex />} />
+                    <Route path="sermons" element={<YouthSermons />} />
+                    <Route path="ministries" element={<YouthMinistries />} />
+                    <Route path="events" element={<YouthEvents />} />
+                    <Route path="newsletter" element={<YouthNewsletter />} />
+                    <Route path="contact" element={<YouthContact />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </div>
+            } />
+            
+            {/* Main Site Routes */}
+            <Route path="*" element={
+              <div className="min-h-screen flex flex-col">
+                <Navigation />
+                <main className="flex-1">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/events" element={<Events />} />
+                    <Route path="/sermons" element={<Sermons />} />
+                    <Route path="/testimonies" element={<Testimonies />} />
+                    <Route path="/give" element={<Give />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/congregations/main" element={<MainCongregation />} />
+                    <Route path="/congregations/french" element={<FrenchCongregation />} />
+                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </div>
+            } />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
