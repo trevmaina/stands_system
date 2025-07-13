@@ -14,7 +14,8 @@ const PayWithPaystack: React.FC<PayWithPaystackProps> = ({
   onSuccess,
   onClose,
 }) => {
-  const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
+
+  const publicKey = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY as string;
 
   const config = {
     reference: new Date().getTime().toString(),
