@@ -87,7 +87,7 @@ export default function UserManagement() {
     try {
       const { error } = await supabase
         .from('profiles')
-        .update({ role: newRole })
+        .update({ role: newRole as any })
         .eq('id', userId);
 
       if (error) throw error;
@@ -267,7 +267,10 @@ export default function UserManagement() {
                             <SelectItem value="church_admin">Church Admin</SelectItem>
                             <SelectItem value="ministry_head">Ministry Head</SelectItem>
                             <SelectItem value="media_team">Media Team</SelectItem>
+                            <SelectItem value="finance_officer">Finance Officer</SelectItem>
                             <SelectItem value="events_coordinator">Events Coord</SelectItem>
+                            <SelectItem value="content_contributor">Content Contrib</SelectItem>
+                            <SelectItem value="volunteer_coordinator">Volunteer Coord</SelectItem>
                             <SelectItem value="member">Member</SelectItem>
                           </SelectContent>
                         </Select>
