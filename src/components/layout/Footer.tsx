@@ -54,9 +54,14 @@ export const Footer = () => {
                   Testimonies
                 </Link>
               </li>
-              <li>
+               <li>
                 <Link to="/give" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   Give
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin" className="text-primary-foreground/80 hover:text-accent transition-colors text-xs opacity-60">
+                  Admin Panel
                 </Link>
               </li>
             </ul>
