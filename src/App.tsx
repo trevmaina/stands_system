@@ -25,6 +25,10 @@ import YouthEvents from "./pages/congregations/youth/Events";
 import YouthNewsletter from "./pages/congregations/youth/Newsletter";
 import YouthContact from "./pages/congregations/youth/Contact";
 import YouthNavigation from "./components/layout/YouthNavigation";
+import AdminDashboard from "./pages/admin/Dashboard";
+import AdminAuth from "./pages/admin/Auth";
+import ContentManagement from "./pages/admin/ContentManagement";
+import UserManagement from "./pages/admin/UserManagement";
 
 const queryClient = new QueryClient();
 
@@ -75,6 +79,11 @@ const App = () => (
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/congregations/main" element={<MainCongregation />} />
                     <Route path="/congregations/french" element={<FrenchCongregation />} />
+                    {/* Admin Routes */}
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/admin/auth" element={<AdminAuth />} />
+                    <Route path="/admin/content" element={<ContentManagement />} />
+                    <Route path="/admin/users" element={<UserManagement />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>
