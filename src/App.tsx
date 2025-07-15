@@ -80,6 +80,7 @@ const App = () => (
                     <Route path="/congregations/main" element={<MainCongregation />} />
                     <Route path="/congregations/french" element={<FrenchCongregation />} />
                     {/* Admin Routes */}
+                    <Route path="/auth" element={<AdminAuth />} />
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/admin/auth" element={<AdminAuth />} />
                     <Route path="/admin/content" element={<ContentManagement />} />
