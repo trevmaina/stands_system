@@ -4,8 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
+import { AdminLayout } from "@/components/admin/AdminLayout";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -29,6 +31,11 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminAuth from "./pages/admin/Auth";
 import ContentManagement from "./pages/admin/ContentManagement";
 import UserManagement from "./pages/admin/UserManagement";
+import EventsManagement from "./pages/admin/EventsManagement";
+import MediaLibrary from "./pages/admin/MediaLibrary";
+import VolunteersManagement from "./pages/admin/VolunteersManagement";
+import FinanceManagement from "./pages/admin/FinanceManagement";
+import AdminSettings from "./pages/admin/AdminSettings";
 
 const queryClient = new QueryClient();
 
@@ -41,60 +48,71 @@ const App = () => (
       disableTransitionOnChange
     >
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            {/* Youth Congregation Routes - with dedicated navigation */}
-            <Route path="/congregations/youth/*" element={
-              <div className="min-h-screen flex flex-col">
-                <YouthNavigation />
-                <main className="flex-1">
-                  <Routes>
-                    <Route index element={<YouthIndex />} />
-                    <Route path="sermons" element={<YouthSermons />} />
-                    <Route path="ministries" element={<YouthMinistries />} />
-                    <Route path="events" element={<YouthEvents />} />
-                    <Route path="newsletter" element={<YouthNewsletter />} />
-                    <Route path="contact" element={<YouthContact />} />
-                  </Routes>
-                </main>
-                <Footer />
-              </div>
-            } />
-            
-            {/* Main Site Routes */}
-            <Route path="*" element={
-              <div className="min-h-screen flex flex-col">
-                <Navigation />
-                <main className="flex-1">
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="/events" element={<Events />} />
-                    <Route path="/sermons" element={<Sermons />} />
-                    <Route path="/testimonies" element={<Testimonies />} />
-                    <Route path="/give" element={<Give />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/congregations/main" element={<MainCongregation />} />
-                    <Route path="/congregations/french" element={<FrenchCongregation />} />
-                    {/* Admin Routes */}
-                    <Route path="/auth" element={<AdminAuth />} />
-                    <Route path="/admin" element={<AdminDashboard />} />
-                    <Route path="/admin-direct" element={<AdminDashboard />} />
-                    <Route path="/admin/auth" element={<AdminAuth />} />
-                    <Route path="/admin/content" element={<ContentManagement />} />
-                    <Route path="/admin/users" element={<UserManagement />} />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </main>
-                <Footer />
-              </div>
-            } />
-          </Routes>
-        </BrowserRouter>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              {/* Admin Routes - with dedicated layout */}
+              <Route path="/admin/*" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="users" element={<UserManagement />} />
+                <Route path="content" element={<ContentManagement />} />
+                <Route path="events" element={<EventsManagement />} />
+                <Route path="media" element={<MediaLibrary />} />
+                <Route path="volunteers" element={<VolunteersManagement />} />
+                <Route path="finance" element={<FinanceManagement />} />
+                <Route path="settings" element={<AdminSettings />} />
+              </Route>
+
+              {/* Admin Auth Route */}
+              <Route path="/auth" element={<AdminAuth />} />
+              <Route path="/admin-direct" element={<AdminDashboard />} />
+
+              {/* Youth Congregation Routes - with dedicated navigation */}
+              <Route path="/congregations/youth/*" element={
+                <div className="min-h-screen flex flex-col">
+                  <YouthNavigation />
+                  <main className="flex-1">
+                    <Routes>
+                      <Route index element={<YouthIndex />} />
+                      <Route path="sermons" element={<YouthSermons />} />
+                      <Route path="ministries" element={<YouthMinistries />} />
+                      <Route path="events" element={<YouthEvents />} />
+                      <Route path="newsletter" element={<YouthNewsletter />} />
+                      <Route path="contact" element={<YouthContact />} />
+                    </Routes>
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              
+              {/* Main Site Routes */}
+              <Route path="*" element={
+                <div className="min-h-screen flex flex-col">
+                  <Navigation />
+                  <main className="flex-1">
+                    <Routes>
+                      <Route path="/" element={<Index />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/services" element={<Services />} />
+                      <Route path="/events" element={<Events />} />
+                      <Route path="/sermons" element={<Sermons />} />
+                      <Route path="/testimonies" element={<Testimonies />} />
+                      <Route path="/give" element={<Give />} />
+                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/congregations/main" element={<MainCongregation />} />
+                      <Route path="/congregations/french" element={<FrenchCongregation />} />
+                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </main>
+                  <Footer />
+                </div>
+              } />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
