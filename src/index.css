@@ -112,3 +112,11 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  /* Grid pattern background */
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle at 1px 1px, hsl(var(--primary)) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+}
