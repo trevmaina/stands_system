@@ -18,9 +18,31 @@ export const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About Church", path: "/about" },
-    { name: "Services", path: "/services" },
+    {
+      name: "Services",
+      path: "/services",
+      submenu: [
+        { name: "Livestream", path: "/livestream" },
+        { name: "Past Sermons", path: "/sermons" },
+      ],
+    },
+    {
+      name: "About Us",
+      path: "/about",
+      submenu: [
+        { name: "Mission & Vision", path: "/about" },
+        { name: "Leadership & Staff", path: "/leadership" },
+        { name: "History", path: "/history" },
+      ],
+    },
+    {
+      name: "Events",
+      path: "/events",
+      submenu: [
+        { name: "Upcoming Events", path: "/events" },
+        { name: "Past Highlights", path: "/events/past" },
+      ],
+    },
     {
       name: "Congregations",
       path: "/congregations",
@@ -30,11 +52,24 @@ export const Navigation = () => {
         { name: "French Congregation", path: "/congregations/french" },
       ],
     },
-    { name: "Sermons", path: "/sermons" },
-    { name: "Events", path: "/events" },
-    { name: "Testimonies", path: "/testimonies" },
+    {
+      name: "Serve",
+      path: "/serve",
+      submenu: [
+        { name: "Volunteer Opportunities", path: "/volunteer" },
+        { name: "Staff Positions", path: "/careers" },
+      ],
+    },
     { name: "Give", path: "/give" },
-    { name: "Contact", path: "/contact" },
+    {
+      name: "Shop",
+      path: "/shop",
+      submenu: [
+        { name: "Merchandise", path: "/shop/merchandise" },
+        { name: "Event Products", path: "/shop/events" },
+        { name: "Special Projects", path: "/shop/projects" },
+      ],
+    },
   ];
 
   const ThemeToggle = () => (
