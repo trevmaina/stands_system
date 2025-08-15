@@ -122,8 +122,52 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* Past Events Highlights */}
       <section className="py-16 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Past Event Highlights</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Annual Easter Celebration",
+                  date: "April 2024",
+                  description: "A powerful celebration of Christ's resurrection with baptisms and special music.",
+                  image: "/placeholder.svg"
+                },
+                {
+                  title: "Youth Summer Camp",
+                  date: "July 2024",
+                  description: "50 youth attended an amazing week of fellowship, worship, and outdoor activities.",
+                  image: "/placeholder.svg"
+                },
+                {
+                  title: "Community Outreach Day",
+                  date: "September 2024",
+                  description: "Over 200 volunteers served our community through various service projects.",
+                  image: "/placeholder.svg"
+                }
+              ].map((event, index) => (
+                <Card key={index} className="border-primary/20 hover:shadow-lg transition-shadow">
+                  <div className="aspect-video bg-muted rounded-t-lg"></div>
+                  <CardHeader>
+                    <CardTitle className="text-lg">{event.title}</CardTitle>
+                    <CardDescription>{event.date}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground text-sm">
+                      {event.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Stay Connected</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">

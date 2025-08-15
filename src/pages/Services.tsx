@@ -119,8 +119,58 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Location Info */}
+      {/* Livestream Section */}
+      <section className="py-16 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8">Watch Live</h2>
+            <div className="aspect-video bg-primary/5 rounded-lg mb-8 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Service Starting Soon</h3>
+                <p className="text-muted-foreground">Join us every Sunday at 9:00 AM & 11:00 AM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Past Sermons Section */}
       <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Recent Sermons</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((sermon) => (
+                <Card key={sermon} className="border-primary/20 hover:shadow-lg transition-shadow">
+                  <div className="aspect-video bg-muted rounded-t-lg"></div>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Faith in Action</CardTitle>
+                    <CardDescription>Pastor John Smith • March 15, 2024</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      Exploring how we can live out our faith in our daily lives and make a difference in our community.
+                    </p>
+                    <div className="flex gap-2">
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Audio</span>
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Video</span>
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Notes</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Location Info */}
+      <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Visit Us</h2>

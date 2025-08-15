@@ -6,23 +6,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Navigation } from "@/components/layout/Navigation";
+import { MainNavigation } from "@/components/layout/MainNavigation";
 import { Footer } from "@/components/layout/Footer";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Leadership from "./pages/Leadership";
-import History from "./pages/History";
 import Services from "./pages/Services";
-import Livestream from "./pages/Livestream";
 import Events from "./pages/Events";
-import EventsPast from "./pages/EventsPast";
-import Sermons from "./pages/Sermons";
-import Volunteer from "./pages/Volunteer";
-import Careers from "./pages/Careers";
-import Shop from "./pages/Shop";
 import Testimonies from "./pages/Testimonies";
 import Give from "./pages/Give";
 import Contact from "./pages/Contact";
+import Serve from "./pages/Serve";
+import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
 import MainCongregation from "./pages/congregations/Main";
 import YouthCongregation from "./pages/congregations/Youth";
@@ -76,6 +71,25 @@ const App = () => (
               <Route path="/auth" element={<AdminAuth />} />
               <Route path="/admin-direct" element={<AdminDashboard />} />
 
+              {/* Main Congregation Routes - with dedicated navigation */}
+              <Route path="/congregations/main/*" element={
+                <div className="min-h-screen flex flex-col">
+                  <MainNavigation />
+                  <main className="flex-1">
+                    <Routes>
+                      <Route index element={<MainCongregation />} />
+                      <Route path="services" element={<Services />} />
+                      <Route path="about" element={<About />} />
+                      <Route path="events" element={<Events />} />
+                      <Route path="serve" element={<Serve />} />
+                      <Route path="give" element={<Give />} />
+                      <Route path="shop" element={<Shop />} />
+                    </Routes>
+                  </main>
+                  <Footer />
+                </div>
+              } />
+
               {/* Youth Congregation Routes - with dedicated navigation */}
               <Route path="/congregations/youth/*" element={
                 <div className="min-h-screen flex flex-col">
@@ -102,23 +116,13 @@ const App = () => (
                     <Routes>
                       <Route path="/" element={<Index />} />
                       <Route path="/about" element={<About />} />
-                      <Route path="/leadership" element={<Leadership />} />
-                      <Route path="/history" element={<History />} />
                       <Route path="/services" element={<Services />} />
-                      <Route path="/livestream" element={<Livestream />} />
-                      <Route path="/sermons" element={<Sermons />} />
                       <Route path="/events" element={<Events />} />
-                      <Route path="/events/past" element={<EventsPast />} />
-                      <Route path="/volunteer" element={<Volunteer />} />
-                      <Route path="/careers" element={<Careers />} />
-                      <Route path="/shop" element={<Shop />} />
-                      <Route path="/shop/merchandise" element={<Shop />} />
-                      <Route path="/shop/events" element={<Shop />} />
-                      <Route path="/shop/projects" element={<Shop />} />
                       <Route path="/testimonies" element={<Testimonies />} />
                       <Route path="/give" element={<Give />} />
                       <Route path="/contact" element={<Contact />} />
-                      <Route path="/congregations/main" element={<MainCongregation />} />
+                      <Route path="/serve" element={<Serve />} />
+                      <Route path="/shop" element={<Shop />} />
                       <Route path="/congregations/french" element={<FrenchCongregation />} />
                       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                       <Route path="*" element={<NotFound />} />

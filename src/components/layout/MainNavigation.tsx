@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
 
-export const Navigation = () => {
+export const MainNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { theme, setTheme } = useTheme();
@@ -67,11 +67,11 @@ export const Navigation = () => {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to="/congregations/main" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">C</span>
+                <span className="text-primary-foreground font-bold text-sm">M</span>
               </div>
-              <span className="font-bold text-xl text-foreground">PCEA St Andrew's</span>
+              <span className="font-bold text-xl text-foreground">Main Congregation</span>
             </Link>
           </div>
 

@@ -91,24 +91,87 @@ const About = () => {
         </div>
       </section>
 
+      {/* Leadership Section */}
+      <section className="py-16 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Our Leadership Team</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { name: "Rev. John Smith", role: "Lead Pastor", image: "/placeholder.svg" },
+                { name: "Sarah Johnson", role: "Worship Director", image: "/placeholder.svg" },
+                { name: "Michael Brown", role: "Youth Pastor", image: "/placeholder.svg" },
+              ].map((leader, index) => (
+                <Card key={index} className="border-primary/20 text-center">
+                  <CardContent className="p-6">
+                    <div className="w-24 h-24 bg-muted rounded-full mx-auto mb-4"></div>
+                    <h3 className="text-xl font-semibold">{leader.name}</h3>
+                    <p className="text-primary">{leader.role}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* History */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Our Story</h2>
-            <div className="prose prose-lg max-w-none text-muted-foreground">
-              <p className="mb-6">
-                Founded in 1985, our church began as a small gathering of believers with a heart for worship and community. 
-                What started as a home Bible study has grown into a vibrant community of faith that spans multiple generations.
-              </p>
-              <p className="mb-6">
-                Over the years, we have been blessed to witness countless lives transformed by the power of God's love. 
-                We have celebrated baptisms, marriages, dedications, and have walked alongside our members through life's joys and challenges.
-              </p>
-              <p>
-                Today, we continue to be committed to our founding principles: authentic worship, biblical teaching, 
-                genuine fellowship, and compassionate service to our community and beyond.
-              </p>
+            <div className="space-y-8">
+              <div className="flex gap-8">
+                <div className="w-20 text-center">
+                  <div className="w-4 h-4 bg-primary rounded-full mx-auto mb-2"></div>
+                  <span className="text-sm font-medium">1985</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2">Church Founded</h3>
+                  <p className="text-muted-foreground">
+                    Started as a small gathering of believers with a heart for worship and community in a home Bible study.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex gap-8">
+                <div className="w-20 text-center">
+                  <div className="w-4 h-4 bg-primary rounded-full mx-auto mb-2"></div>
+                  <span className="text-sm font-medium">1992</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2">First Building</h3>
+                  <p className="text-muted-foreground">
+                    Moved into our first dedicated church building as the congregation grew to over 100 members.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex gap-8">
+                <div className="w-20 text-center">
+                  <div className="w-4 h-4 bg-primary rounded-full mx-auto mb-2"></div>
+                  <span className="text-sm font-medium">2010</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2">Youth & French Congregations</h3>
+                  <p className="text-muted-foreground">
+                    Launched specialized ministries to better serve our diverse community needs.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex gap-8">
+                <div className="w-20 text-center">
+                  <div className="w-4 h-4 bg-primary rounded-full mx-auto mb-2"></div>
+                  <span className="text-sm font-medium">Today</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2">Growing Community</h3>
+                  <p className="text-muted-foreground">
+                    A vibrant community of over 500 members committed to authentic worship, biblical teaching, and compassionate service.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
